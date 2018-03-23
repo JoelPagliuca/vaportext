@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
-	fmt.Print("Hello\n")
+	args := os.Args[1:]
+	for _, v := range args {
+		fmt.Println(v)
+	}
 }
