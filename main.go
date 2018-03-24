@@ -1,4 +1,4 @@
-// vaportext - create vaporwave text
+// vaportext - create ｖａｐｏｒｗａｖｅ text
 package main
 
 import (
@@ -6,6 +6,8 @@ import (
 	"os"
 	"strings"
 )
+
+var version = "to be set by makefile"
 
 func main() {
 	// read in the string from input
