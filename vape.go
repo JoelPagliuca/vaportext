@@ -4,11 +4,17 @@ import (
 	"strings"
 )
 
+const fullwidthOffset int32 = 0xFEE0
+
 // vapor - convert to vaportext
 func vapor(s string) string {
 	var buffer strings.Builder
 	for _, c := range s {
-		buffer.WriteRune(c + (0xFF00 - 32))
+		if c == ' ' {
+			buffer.WriteRune(c)
+		} else {
+			buffer.WriteRune(c + fullwidthOffset)
+		}
 	}
 	return buffer.String()
 }

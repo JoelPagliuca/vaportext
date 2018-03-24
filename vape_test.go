@@ -11,8 +11,11 @@ func TestVapor(t *testing.T) {
 		args args
 		want string
 	}{
-		{"single word", args{"Joel"}, "Ｊｏｅｌ"},
-		{"special characters", args{"!@#$%^&*()"}, "！＠＃＄％＾＆＊（）"},
+		{"single word", args{"Suffer"}, "Ｓｕｆｆｅｒ"},
+		{"lowercase chars", args{"abcdefghijklmnopqrstuvwxyz"}, "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ"},
+		{"uppercase chars", args{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"}, "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ"},
+		{"special chars", args{"!@#$%^&*()"}, "！＠＃＄％＾＆＊（）"},
+		{"spaces", args{"My Dude"}, "Ｍｙ Ｄｕｄｅ"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
