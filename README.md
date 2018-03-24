@@ -1,3 +1,3 @@
 # Vaportext
 
-Go program for making Aesthetic text
+For making **Ａｅｓｔｈｅｔｉｃ** text
