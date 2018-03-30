@@ -14,6 +14,7 @@ var version = "to be set by makefile"
 func main() {
 	// get input flags
 	sendToClip := flag.Bool("c", false, "Copy output to clipboard")
+	zalgoInput := flag.Bool("z", false, "Make the text Zalgo")
 	flag.Parse()
 	// read in the string from input
 	inputText := flag.Args()
@@ -29,7 +30,11 @@ func main() {
 	output := buffer.String()
 
 	// do the conversion
-	output = vapor(output)
+	if *zalgoInput {
+		output = zalgo(output)
+	} else {
+		output = vapor(output)
+	}
 	if *sendToClip {
 		clipboard.WriteAll(output)
 	} else {
