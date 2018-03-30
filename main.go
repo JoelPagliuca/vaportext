@@ -2,24 +2,38 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"os"
 	"strings"
+
+	"github.com/atotto/clipboard"
 )
 
 var version = "to be set by makefile"
 
 func main() {
+	// get input flags
+	sendToClip := flag.Bool("c", false, "Copy output to clipboard")
+	flag.Parse()
 	// read in the string from input
-	var buffer strings.Builder
-	args := os.Args[1:]
+	inputText := flag.Args()
+
 	// combine into single string
+	var buffer strings.Builder
 	var space string
-	for _, v := range args {
+	for _, v := range inputText {
 		buffer.WriteString(space)
 		buffer.WriteString(v)
 		space = " "
 	}
-	s := vapor(buffer.String())
-	fmt.Printf("%s\n", s)
+	output := buffer.String()
+
+	// do the conversion
+	output = vapor(output)
+	if *sendToClip {
+		clipboard.WriteAll(output)
+	} else {
+		fmt.Printf("%s\n", output)
+	}
+
 }
