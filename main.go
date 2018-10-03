@@ -35,10 +35,10 @@ func main() {
 	} else {
 		output = vapor(output)
 	}
+
 	if *sendToClip {
 		clipboard.WriteAll(output)
 	} else {
 		fmt.Printf("%s\n", output)
 	}
-
 }
