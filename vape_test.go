@@ -11,6 +11,7 @@ func TestVapor(t *testing.T) {
 		args args
 		want string
 	}{
+		{"empty string", args{""}, ""},
 		{"single word", args{"Suffer"}, "Ｓｕｆｆｅｒ"},
 		{"lowercase chars", args{"abcdefghijklmnopqrstuvwxyz"}, "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ"},
 		{"uppercase chars", args{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"}, "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ"},
