@@ -11,11 +11,11 @@ import (
 var version = "to be set by makefile"
 
 func main() {
-	input := struct {
+	var input struct {
 		SendToClip bool   `survey:"clip"`
 		ZalgoInput bool   `survey:"zalgo"`
 		Text       string `survey:"text"`
-	}{}
+	}
 
 	survey.Ask([]*survey.Question{
 		{
