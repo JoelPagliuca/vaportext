@@ -1,5 +1,5 @@
 OUT := vaportext
-PKG := gitlab.com/JoelPagliuca/vaportext
+PKG := github.com/JoelPagliuca/vaportext
 VERSION := $(shell git describe --always --long --dirty)
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
 GO_FILES := $(shell find . -name '*.go' | grep -v /vendor/)
