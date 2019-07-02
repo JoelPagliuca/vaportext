@@ -4,6 +4,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/atotto/clipboard"
@@ -13,10 +14,21 @@ import (
 var version = "to be set by makefile"
 
 func main() {
-	interactive := flag.Bool("i", false, "interactive")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: %s [options] [...]\n", os.Args[0])
+		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "version: %s\n", version)
+	}
+	interactive := flag.Bool("i", false, "Interactive")
 	sendToClip := flag.Bool("c", false, "Copy output to clipboard")
 	zalgoInput := flag.Bool("z", false, "Make the text Zalgo")
+	versionFlag := flag.Bool("v", false, "Print version and exit")
 	flag.Parse()
+
+	if *versionFlag {
+		fmt.Println(version)
+		os.Exit(0)
+	}
 
 	inputText := flag.Args()
 	var buffer strings.Builder
