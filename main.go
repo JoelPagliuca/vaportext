@@ -11,7 +11,7 @@ import (
 	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
-var version = "to be set by makefile"
+var version = "go-installed"
 
 func main() {
 	flag.Usage = func() {
