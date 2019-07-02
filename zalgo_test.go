@@ -11,7 +11,7 @@ func Test_zalgo(t *testing.T) {
 		args args
 		want string
 	}{
-		{"single word", args{"Suffer"}, "S͑u̇͟f͌ͮ̐fe͔̝ͧ͞r͋̾̔̚"},
+		{"single word", args{"Suffer"}, "S͑u̧̇͌ͮ̐͟ͅf͔̝ͧ͞f͋̾̔̚e̬̘͌̊͠ŗ̶̛͌̇̈́͜"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

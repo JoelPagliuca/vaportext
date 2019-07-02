@@ -16,7 +16,7 @@ func zalgo(s string) string {
 			buffer.WriteRune(c)
 		} else {
 			buffer.WriteRune(c)
-			count := rand.Intn(5)
+			count := rand.Intn(10)
 			for i := 0; i < count; i++ {
 				buffer.WriteRune(rune(rand.Intn(879-768)) + 768)
 			}
