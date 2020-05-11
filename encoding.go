@@ -6,6 +6,21 @@ import (
 	"time"
 )
 
+const fullwidthOffset int32 = 0xFEE0
+
+// vapor - convert to vaportext
+func vapor(s string) string {
+	var buffer strings.Builder
+	for _, c := range s {
+		if c == ' ' {
+			buffer.WriteRune(c)
+		} else {
+			buffer.WriteRune(c + fullwidthOffset)
+		}
+	}
+	return buffer.String()
+}
+
 // Range for Combining characters
 // 768,879
 func zalgo(s string) string {
