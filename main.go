@@ -22,6 +22,7 @@ func main() {
 	interactive := flag.Bool("i", false, "Interactive")
 	sendToClip := flag.Bool("c", false, "Copy output to clipboard")
 	zalgoInput := flag.Bool("z", false, "Make the text Zalgo")
+	frakturInput := flag.Bool("f", false, "Make the text Fraktur")
 	versionFlag := flag.Bool("v", false, "Print version and exit")
 	flag.Parse()
 
@@ -40,13 +41,15 @@ func main() {
 	}
 
 	input := struct {
-		SendToClip bool   `survey:"clip"`
-		ZalgoInput bool   `survey:"zalgo"`
-		Text       string `survey:"text"`
+		SendToClip   bool   `survey:"clip"`
+		ZalgoInput   bool   `survey:"zalgo"`
+		FrakturInput bool   `survey:"fraktur"`
+		Text         string `survey:"text"`
 	}{
-		SendToClip: *sendToClip,
-		ZalgoInput: *zalgoInput,
-		Text:       buffer.String(),
+		SendToClip:   *sendToClip,
+		ZalgoInput:   *zalgoInput,
+		FrakturInput: *frakturInput,
+		Text:         buffer.String(),
 	}
 
 	if *interactive {
@@ -60,6 +63,10 @@ func main() {
 				Prompt: &survey.Confirm{Message: "Zalgo?"},
 			},
 			{
+				Name:   "fraktur",
+				Prompt: &survey.Confirm{Message: "Fraktur?"},
+			},
+			{
 				Name:   "text",
 				Prompt: &survey.Input{Message: "Input:"},
 			},
@@ -69,6 +76,8 @@ func main() {
 	output := input.Text
 	if input.ZalgoInput {
 		output = zalgo(output)
+	} else if input.FrakturInput {
+		output = fraktur(output)
 	} else {
 		output = vapor(output)
 	}
